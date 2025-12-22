@@ -1,0 +1,265 @@
+
+.about-section {
+  padding: 100px 0;
+  background-color: #f9f9f9; /* Light contrast against white/dark headers */
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* --- LEFT SIDE: Image Grid --- */
+.about-images {
+  position: relative;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* Left col slightly wider */
+  grid-template-rows: auto auto;
+  gap: 15px;
+}
+
+/* Specific Image Styling for Collage Effect */
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.image-grid img:hover {
+  transform: scale(1.02);
+}
+
+/* The tall image on the left spans 2 rows */
+.img-tall {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  height: 500px !important; /* Force height for consistency */
+}
+
+/* Top right wide image */
+.img-wide {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  height: 240px !important;
+}
+
+/* REVISED GRID for 4 IMAGES */
+.image-grid {
+  grid-template-columns: 1fr 1fr;
+  /* grid-template-rows: 300px 200px; */
+}
+
+.img-tall {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  height: 100% !important;
+}
+
+.img-wide {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  height: 100% !important;
+}
+
+/* We need to wrap the last 2 images or use nth-child to split the slot.
+   But for simplicity in React, let's just make the grid 2x2 but vary heights */
+
+/* FIXING GRID FOR THE 4 IMAGES IN THE JSX */
+.image-grid {
+  display: grid;
+  grid-template-areas: 
+    "main side1"
+    "main side2"
+    "main side3";
+  gap: 15px;
+}
+
+.img-tall { grid-area: main; height: 520px !important; }
+.img-wide { grid-area: side1; height: 160px !important; }
+.img-small:nth-of-type(3) { grid-area: side2; height: 160px !important; }
+.img-small:nth-of-type(4) { grid-area: side3; height: 160px !important; }
+
+
+/* Floating Badge */
+.experience-badge {
+  position: absolute;
+  bottom: 30px;
+  left: -20px;
+  background: #1a1a1a;
+  color: white;
+  padding: 25px 35px;
+  border-radius: 4px;
+  box-shadow: 10px 10px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.experience-badge .years {
+  font-size: 38px;
+  font-weight: 800;
+  color: #ff6b35; /* Accent color */
+  line-height: 1;
+}
+
+.experience-badge .text {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* --- RIGHT SIDE: Content --- */
+.about-content {
+  padding-left: 20px;
+}
+
+.sub-title {
+  color: #ff6b35;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.main-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* List Styling */
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.features-list li {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.check {
+  color: white;
+  background: #ff6b35;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* Button */
+.about-btn {
+  padding: 15px 35px;
+  background-color: #111;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-btn:hover {
+  background-color: #ff6b35;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+  .about-container {
+    grid-template-columns: 1fr; /* Stack vertically */
+    gap: 60px;
+  }
+
+  .about-images {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .about-content {
+    padding-left: 0;
+    text-align: center;
+  }
+  
+  .features-list {
+    justify-content: center; /* Centering lists on mobile requires specific flex tweaks, grid is safer */
+    max-width: 500px;
+    margin: 30px auto;
+  }
+
+  .img-tall { height: 400px !important; }
+  .img-wide, .img-small { height: 120px !important; }
+}
+
+@media (max-width: 600px) {
+  .main-title { font-size: 32px; }
+  
+  .image-grid {
+    grid-template-areas: 
+      "main main"
+      "side1 side2"
+      "side3 side3";
+  }
+  
+  .img-tall { grid-area: main; height: 300px !important; }
+  .img-wide { grid-area: side1; height: 150px !important; }
+  .img-small:nth-of-type(3) { grid-area: side2; height: 150px !important; }
+  .img-small:nth-of-type(4) { grid-area: side3; height: 150px !important; }
+  
+  .features-list { grid-template-columns: 1fr; text-align: left; }
+  
+  .experience-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+    padding: 15px 25px;
+    width: 80%;
+    flex-direction: row;
+    gap: 15px;
+  }
+  
+  .experience-badge .years { font-size: 28px; }
+  .experience-badge .text { font-size: 12px; text-align: left; margin-top: 0;}
+}

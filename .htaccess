@@ -1,0 +1,74 @@
+# --------------------------------------------
+# Enable Rewrite Engine
+# --------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase  /
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # If the request is for an existing file or directory → serve it
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise → serve index.html (React SPA Routing)
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+
+# --------------------------------------------
+# CORS for fonts (React assets)
+# --------------------------------------------
+<FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+</IfModule>
+</FilesMatch>
+
+
+# --------------------------------------------
+# Caching for static assets
+# --------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Images – 1 year
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+
+  # CSS & JS – 1 month (non-hashed)
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ttf|otf|eot|woff|woff2|js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # No cache for index.html
+  <FilesMatch "^(index\.html|version\.txt)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+</IfModule>
+
+
+# --------------------------------------------
+# Compression (gzip/brotli)
+# --------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>

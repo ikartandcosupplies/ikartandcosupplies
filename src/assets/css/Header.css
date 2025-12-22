@@ -1,0 +1,231 @@
+/* Header.css */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.4s ease;
+  font-family: 'Inter', sans-serif;
+  padding: 20px 0;
+  background: transparent; 
+}
+
+/* Scrolled State (Dark Background) */
+.header.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+  padding: 15px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 8%; /* Matches Hero padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.logo-accent {
+  color: #ff6b35; /* Matches your Hero button */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 40px;
+   color: white;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: white !important;
+  font-weight: bold !important;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+/* Hover Underline Effect */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ff6b35;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Action Buttons */
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn-login {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: opacity 0.3s;
+}
+
+.btn-login:hover {
+  opacity: 0.8;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+
+.nav-links a.active {
+  color: #f4a261; /* highlight color */
+  font-weight: 600;
+}
+
+/* Optional underline animation */
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f4a261;
+}
+
+
+.btn-signup {
+  background: white;
+  color: black;
+  border: none;
+  padding: 10px 24px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-signup:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Mobile Setup */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.bar {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.mobile-buttons {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .header-container { padding: 0 5%; }
+  .nav-links { gap: 25px; }
+}
+
+@media (max-width: 768px) {
+  .header-actions { display: none; } /* Hide desktop buttons */
+  .hamburger { display: flex; } /* Show hamburger */
+  
+  /* Mobile Menu Styles */
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0; /* Hidden by default */
+    background: #0a0a0a;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    gap: 30px;
+  }
+
+  .nav-links.active {
+    height: 100vh; /* Full screen height when open */
+    padding-top: 60px;
+    background: rgba(0,0,0,0.98);
+  }
+
+  .nav-links a {
+    font-size: 20px;
+    opacity: 0; /* Fade in effect */
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .nav-links.active a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Show buttons inside mobile menu */
+  .mobile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    width: 80%;
+    opacity: 0;
+    transition: opacity 0.5s 0.2s;
+  }
+
+  .nav-links.active .mobile-buttons {
+    opacity: 1;
+  }
+
+  .mobile-buttons .btn-login { border: 1px solid rgba(255,255,255,0.2); border-radius: 4px;}
+  .mobile-buttons .btn-signup { width: 100%; }
+
+  /* Hamburger Animation */
+  .bar.open:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+  .bar.open:nth-child(2) { opacity: 0; }
+  .bar.open:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+}

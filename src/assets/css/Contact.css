@@ -1,0 +1,144 @@
+/* MAIN */
+.wc-contact-section {
+  padding: 30px 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.wc-contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left Content */
+.wc-contact-content {
+  text-align: left;
+}
+
+.wc-sub-title {
+  color: #ff6b35;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.wc-main-title {
+  font-size: 42px;
+  font-weight: 800;
+  margin: 15px 0 20px;
+  color: #2c3e50;
+}
+
+.wc-contact-desc {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+.wc-simple-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wc-detail-item {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Right Side Form */
+.wc-form-wrapper {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+.wc-form-group {
+  margin-bottom: 20px;
+}
+
+.wc-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.wc-input, 
+.wc-textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fcfcfc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.wc-input:focus, 
+.wc-textarea:focus {
+  outline: none;
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 4px rgba(255,107,53,0.15);
+  background-color: #fff;
+}
+
+.wc-submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: #ff6b35;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.wc-submit-btn:hover {
+  background: #e65a28;
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .wc-contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wc-contact-section {
+    padding: 60px 0;
+  }
+
+  .wc-form-wrapper {
+    padding: 24px;
+  }
+
+  .wc-main-title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .wc-form-wrapper {
+    padding: 18px;
+  }
+
+  .wc-input, .wc-textarea {
+    padding: 10px;
+  }
+}

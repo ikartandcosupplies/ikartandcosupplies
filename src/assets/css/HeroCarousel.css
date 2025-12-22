@@ -1,0 +1,182 @@
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background-color: #000;
+}
+
+/* Slide Container */
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Background Image with Ken Burns Effect (Zoom) */
+.slide-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1);
+  transition: transform 8s ease-out; /* Smooth zoom over time */
+}
+
+.hero-slide.active .slide-bg {
+  transform: scale(1.15); /* Zooms in when active */
+}
+
+/* Modern Gradient Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    rgba(0,0,0,0.85) 0%, 
+    rgba(0,0,0,0.5) 50%, 
+    rgba(0,0,0,0.1) 100%
+  );
+  z-index: 1;
+}
+
+/* Content Layout */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 8%; /* More breathing room */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  max-width: 700px;
+  color: white;
+}
+
+/* Typography & Staggered Animations */
+.hero-title {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out 0.2s; /* Delay 0.2s */
+}
+
+.hero-desc {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 48px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out 0.4s; /* Delay 0.4s */
+}
+
+.hero-btn {
+  padding: 18px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background-color: var(--btn-color); /* Uses inline CSS var */
+  border: none;
+  border-radius: 4px; /* Slightly squarer for modern look */
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 
+    background-color 0.3s, 
+    transform 0.3s, 
+    opacity 0.8s ease-out 0.6s; /* Delay 0.6s for entrance */
+}
+
+/* Active State Trigger for Text */
+.hero-slide.active .hero-title,
+.hero-slide.active .hero-desc,
+.hero-slide.active .hero-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button Hover Effect */
+.hero-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Modern Line Indicators */
+.indicators-container {
+  position: absolute;
+  bottom: 60px;
+  left: 8%; /* Aligned with text */
+  display: flex;
+  gap: 16px;
+  z-index: 10;
+}
+
+.indicator-line {
+  width: 60px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 2px;
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+.indicator-line .progress-bar {
+  width: 0%;
+  height: 100%;
+  background: white;
+  transition: width 0s;
+}
+
+/* Active Indicator Animation */
+.indicator-line.active {
+  width: 80px; /* Expands slightly when active */
+}
+
+.indicator-line.active .progress-bar {
+  width: 100%;
+  /* Duration matches auto-play interval (6s) */
+  transition: width 6s linear; 
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .hero-title { font-size: 52px; }
+  .hero-overlay {
+    background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content { padding-left: 5%; padding-right: 5%; justify-content: center; text-align: center; }
+  .hero-title { font-size: 42px; }
+  .hero-desc { font-size: 18px; margin-bottom: 30px; }
+  .hero-btn { width: 100%; padding: 16px 0; }
+  .indicators-container { left: 50%; transform: translateX(-50%); }
+}
