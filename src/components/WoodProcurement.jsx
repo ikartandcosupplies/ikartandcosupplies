@@ -77,7 +77,7 @@ const WoodProcurement = () => {
       {/* Page Header */}
       <header className="wp-header">
         <div className="wp-header-content">
-          <span className="wp-subtitle">For Farmers & Auctions</span>
+          <span className="wp-subtitle">From Farmers & Auctions</span>
           <h1 className="wp-title">Wood Procurement Services</h1>
           <p className="wp-desc">
             We procure high-quality plantation wood and firewood directly from the source. 

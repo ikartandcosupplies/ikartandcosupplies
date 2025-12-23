@@ -57,13 +57,11 @@ const Contact = () => {
           <p className="wc-contact-desc">
             <strong>Timber Grades:</strong> 7, 316, 3, 2021, 1803 <br />
             <strong>Thickness:</strong> 3 inch & above diameter <br /><br />
-
-            Looking for a trusted partner for wood procurement, construction timber supply, or industrial raw material? <br />
-            <strong>ikartandco</strong> is here to support farmers, industries, and contractors with reliable, honest, and professional service.
+            Looking for a trusted partner for wood procurement, construction timber supply, or industrial raw material?
+            <strong> ikartandco</strong> is here to support farmers, industries, and contractors with reliable, honest, and professional service.
           </p>
 
-
-          <h5 className="wc-sub-title">ikartandco – Efficient. Transparent. Trusted.</h5>
+          <strong className="wc-sub-title">Startup: </strong> Whatsapp & Email Us <br /><br />
 
           <div className="wc-simple-details">
             <div className="wc-detail-item">
