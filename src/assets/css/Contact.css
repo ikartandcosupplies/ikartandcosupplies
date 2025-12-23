@@ -129,7 +129,10 @@
   }
 
   .wc-main-title {
-    font-size: 30px;
+    font-size: 20px;
+  }
+  .wc-contact-desc{
+    font-size: 16px;
   }
 }
 
@@ -140,5 +143,11 @@
 
   .wc-input, .wc-textarea {
     padding: 10px;
+  }
+   .wc-contact-desc{
+    font-size: 16px;
+  }
+  .wc-sub-title{
+    font-size: 16px;
   }
 }
