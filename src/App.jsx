@@ -8,7 +8,7 @@ import IndustrialSupply from "./components/IndustrialSupply";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Maintenance from "./components/Maintenance";
 
-const IS_MAINTENANCE = true;
+const IS_MAINTENANCE = false;
 
   function App() {
 
