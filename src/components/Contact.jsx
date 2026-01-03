@@ -68,7 +68,7 @@ const Contact = () => {
               <strong>Email:</strong> ikartandco@gmail.com
             </div>
             <div className="wc-detail-item">
-              <strong>Phone:</strong>+91 9908710654, +91 9154438666
+              <strong>Phone:</strong> +91 9908710654, +91 9154438666
             </div>
             <div className="wc-detail-item">
               <strong>Address:</strong> Saraswathi nilayam, 8-4/6, Padmavathipuram, Tirupati, Andhra Pradesh 517503
